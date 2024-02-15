@@ -159,7 +159,7 @@ export default function Chat() {
         <div className="flex-grow">
           {!selectedUserId && (
             <div className="flex h-full flex-grow items-center justify-center">
-              <div className="text-gray-300">&larr; Select a person from the sidebar</div>
+              <div className="text-black">&larr; Select a person from the sidebar</div>
             </div>
           )}
           {!!selectedUserId && (
