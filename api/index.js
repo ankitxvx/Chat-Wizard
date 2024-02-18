@@ -111,6 +111,10 @@ app.post('/register', async (req,res) => {
     res.status(500).json('error');
   }
 });
+app.use(express.static("./client/dist"));
+p.get("*", (req, res) => {
+res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"))
+});
 
 const server = app.listen(8080);
 
