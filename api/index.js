@@ -20,11 +20,14 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'process.env.CLIENT_URL',
   credentials: true,
 };
 
+
 app.use(cors(corsOptions));
+
+
 
 async function getUserDataFromRequest(req) {
   return new Promise((resolve, reject) => {
@@ -111,11 +114,8 @@ app.post('/register', async (req,res) => {
     res.status(500).json('error');
   }
 });
-app.use(express.static("./client/dist"));
-p.get("*", (req, res) => {
-res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"))
-});
 
+app.use(express.static("./client/dist"));
 const server = app.listen(8080);
 
 const wss = new ws.WebSocketServer({server});
