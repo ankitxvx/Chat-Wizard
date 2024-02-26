@@ -20,7 +20,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: 'process.env.CLIENT_URL',
+  origin: 'http://localhost:5173',
   credentials: true,
 };
 
@@ -115,7 +115,7 @@ app.post('/register', async (req,res) => {
   }
 });
 
-app.use(express.static("./client/dist"));
+ 
 const server = app.listen(8080);
 
 const wss = new ws.WebSocketServer({server});
