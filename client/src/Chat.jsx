@@ -21,7 +21,7 @@ export default function Chat() {
   }, [selectedUserId]);
 
   function connectToWs() {
-    const ws = new WebSocket('ws:https://chat-wizard-p6xx.vercel.app/');
+    const ws = new WebSocket('ws://localhost:8855/');
     setWs(ws);
     ws.addEventListener('message', handleMessage);
     ws.addEventListener('close', () => {
@@ -38,7 +38,7 @@ export default function Chat() {
       people[userId] = username;
     });
     setOnlinePeople(people);
-    console.log(people);
+    console.log(people)
   }
 
   function handleMessage(ev) {
@@ -64,12 +64,11 @@ export default function Chat() {
   function sendMessage(ev, file = null) {
     if (ev) ev.preventDefault();
     if (ws && ws.readyState === WebSocket.OPEN) {
-      const message = {
+      ws.send(JSON.stringify({
         recipient: selectedUserId,
         text: newMessageText,
         file,
-      };
-      ws.send(JSON.stringify(message));
+      }));
       if (file) {
         axios.get('/messages/' + selectedUserId).then(res => {
           setMessages(res.data);
