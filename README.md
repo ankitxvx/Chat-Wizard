@@ -102,9 +102,7 @@ Add some screenshots or a video here to showcase the design and functionality of
 
 ## Contributing
 Contributions are welcome! Feel free to fork this repository and submit a pull request if you'd like to improve the app.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+ 
 
 ---
 
